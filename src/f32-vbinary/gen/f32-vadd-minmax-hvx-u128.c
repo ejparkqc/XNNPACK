@@ -38,10 +38,10 @@ void xnn_f32_vadd_minmax_ukernel__hvx_u128(
     input_a += 128;
     input_b += 128;
 
-    HVX_Vector vacc0 = xnn_add_f32(va0, vb0);
-    HVX_Vector vacc1 = xnn_add_f32(va1, vb1);
-    HVX_Vector vacc2 = xnn_add_f32(va2, vb2);
-    HVX_Vector vacc3 = xnn_add_f32(va3, vb3);
+    HVX_Vector vacc0 = xnn_add_qf32(va0, vb0);
+    HVX_Vector vacc1 = xnn_add_qf32(va1, vb1);
+    HVX_Vector vacc2 = xnn_add_qf32(va2, vb2);
+    HVX_Vector vacc3 = xnn_add_qf32(va3, vb3);
 
 
     vacc0 = xnn_max_f32(vacc0, voutput_min);
@@ -66,7 +66,7 @@ void xnn_f32_vadd_minmax_ukernel__hvx_u128(
     input_a += 32;
     input_b += 32;
 
-    HVX_Vector vacc = xnn_add_f32(va, vb);
+    HVX_Vector vacc = xnn_add_qf32(va, vb);
     vacc = xnn_max_f32(vacc, voutput_min);
     vacc = xnn_min_f32(vacc, voutput_max);
 
@@ -77,7 +77,7 @@ void xnn_f32_vadd_minmax_ukernel__hvx_u128(
      HVX_Vector va = xnn_loadu_f32(input_a);
      HVX_Vector vb = xnn_loadu_f32(input_b);
 
-     HVX_Vector vacc = xnn_add_f32(va, vb);
+     HVX_Vector vacc = xnn_add_qf32(va, vb);
      vacc = xnn_max_f32(vacc, voutput_min);
      vacc = xnn_min_f32(vacc, voutput_max);
      

@@ -31,7 +31,7 @@ void xnn_f32_vaddc_minmax_ukernel__hvx_u32(
     HVX_Vector va = xnn_loadu_f32(input_a);
     input_a += 32;
 
-    HVX_Vector vacc = xnn_add_f32(va, vb);
+    HVX_Vector vacc = xnn_add_qf32(va, vb);
     vacc = xnn_max_f32(vacc, voutput_min);
     vacc = xnn_min_f32(vacc, voutput_max);
 
@@ -41,7 +41,7 @@ void xnn_f32_vaddc_minmax_ukernel__hvx_u32(
   if XNN_UNLIKELY(batch != 0) {
     HVX_Vector va = xnn_loadu_f32(input_a);
 
-    HVX_Vector vacc = xnn_add_f32(va, vb);
+    HVX_Vector vacc = xnn_add_qf32(va, vb);
     vacc = xnn_max_f32(vacc, voutput_min);
     vacc = xnn_min_f32(vacc, voutput_max);
 
