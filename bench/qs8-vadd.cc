@@ -292,6 +292,29 @@ static void qs8_vadd(
     ->UseRealTime();
 #endif  // XNN_ARCH_WASMSIMD || XNN_ARCH_WASMRELAXEDSIMD
 
+#if XNN_ENABLE_HVX && XNN_ARCH_HEXAGON
+  BENCHMARK_CAPTURE(qs8_vadd, hvx_u32,
+                    xnn_qs8_vadd_minmax_ukernel__hvx_u32,
+                    xnn_init_qs8_add_minmax_hvx_params)
+    ->Apply(benchmark::utils::BinaryElementwiseParameters<int8_t, int8_t>)
+    ->UseRealTime();
+  BENCHMARK_CAPTURE(qs8_vadd, hvx_u64,
+                    xnn_qs8_vadd_minmax_ukernel__hvx_u64,
+                    xnn_init_qs8_add_minmax_hvx_params)
+    ->Apply(benchmark::utils::BinaryElementwiseParameters<int8_t, int8_t>)
+    ->UseRealTime();
+  BENCHMARK_CAPTURE(qs8_vadd, hvx_u96,
+                    xnn_qs8_vadd_minmax_ukernel__hvx_u96,
+                    xnn_init_qs8_add_minmax_hvx_params)
+    ->Apply(benchmark::utils::BinaryElementwiseParameters<int8_t, int8_t>)
+    ->UseRealTime();
+  BENCHMARK_CAPTURE(qs8_vadd, hvx_u128,
+                    xnn_qs8_vadd_minmax_ukernel__hvx_u128,
+                    xnn_init_qs8_add_minmax_hvx_params)
+    ->Apply(benchmark::utils::BinaryElementwiseParameters<int8_t, int8_t>)
+    ->UseRealTime();
+#endif  // XNN_ENABLE_HVX && XNN_ARCH_HEXAGON
+
 BENCHMARK_CAPTURE(qs8_vadd, scalar_u1,
                   xnn_qs8_vadd_minmax_ukernel__scalar_u1,
                   xnn_init_qs8_add_minmax_scalar_params)
