@@ -31,7 +31,7 @@ void xnn_f32_qs8_vcvt_ukernel__hvx_u32(
     HVX_Vector vx = xnn_loadu_f32(input);
     input += 32;
 
-    vx = xnn_fmadd_f32(vx, vscale, vmagic_bias);
+    vx = xnn_fmadd_qf32(vx, vscale, vmagic_bias);
 
     const HVX_Vector vacc = Q6_Vw_vsub_VwVw_sat(vx, vmagic_bias_less_zero_point);
 
@@ -47,7 +47,7 @@ void xnn_f32_qs8_vcvt_ukernel__hvx_u32(
     assert(batch < 32 * sizeof(float));
     HVX_Vector vx = xnn_loadu_f32(input);
 
-    vx = xnn_fmadd_f32(vx, vscale, vmagic_bias);
+    vx = xnn_fmadd_qf32(vx, vscale, vmagic_bias);
 
     const HVX_Vector vacc = Q6_Vw_vsub_VwVw_sat(vx, vmagic_bias_less_zero_point);
 

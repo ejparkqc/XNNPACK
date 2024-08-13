@@ -34,10 +34,10 @@ void xnn_f32_qs8_vcvt_ukernel__hvx_u128(
     HVX_Vector vx3 = xnn_loadu_f32(input + 96);
     input += 128;
 
-    vx0 = xnn_fmadd_f32(vx0, vscale, vmagic_bias);
-    vx1 = xnn_fmadd_f32(vx1, vscale, vmagic_bias);
-    vx2 = xnn_fmadd_f32(vx2, vscale, vmagic_bias);
-    vx3 = xnn_fmadd_f32(vx3, vscale, vmagic_bias);
+    vx0 = xnn_fmadd_qf32(vx0, vscale, vmagic_bias);
+    vx1 = xnn_fmadd_qf32(vx1, vscale, vmagic_bias);
+    vx2 = xnn_fmadd_qf32(vx2, vscale, vmagic_bias);
+    vx3 = xnn_fmadd_qf32(vx3, vscale, vmagic_bias);
 
     const HVX_Vector vacc0 = Q6_Vw_vsub_VwVw_sat(vx0, vmagic_bias_less_zero_point);
     const HVX_Vector vacc1 = Q6_Vw_vsub_VwVw_sat(vx1, vmagic_bias_less_zero_point);
@@ -58,7 +58,7 @@ void xnn_f32_qs8_vcvt_ukernel__hvx_u128(
     HVX_Vector vx = xnn_loadu_f32(input);
     input += 32;
 
-    vx = xnn_fmadd_f32(vx, vscale, vmagic_bias);
+    vx = xnn_fmadd_qf32(vx, vscale, vmagic_bias);
 
     const HVX_Vector vacc = Q6_Vw_vsub_VwVw_sat(vx, vmagic_bias_less_zero_point);
 
@@ -74,7 +74,7 @@ void xnn_f32_qs8_vcvt_ukernel__hvx_u128(
     assert(batch < 32 * sizeof(float));
     HVX_Vector vx = xnn_loadu_f32(input);
 
-    vx = xnn_fmadd_f32(vx, vscale, vmagic_bias);
+    vx = xnn_fmadd_qf32(vx, vscale, vmagic_bias);
 
     const HVX_Vector vacc = Q6_Vw_vsub_VwVw_sat(vx, vmagic_bias_less_zero_point);
 

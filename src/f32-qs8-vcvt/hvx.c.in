@@ -34,7 +34,7 @@ void xnn_f32_${DATATYPE.lower()}_vcvt_ukernel__hvx_u${BATCH_TILE}(
       input += ${BATCH_TILE};
 
       $for N in range(0, BATCH_TILE, 32):
-        vx${int(N/32)} = xnn_fmadd_f32(vx${int(N/32)}, vscale, vmagic_bias);
+        vx${int(N/32)} = xnn_fmadd_qf32(vx${int(N/32)}, vscale, vmagic_bias);
 
       $for N in range(0, BATCH_TILE, 32):
         const HVX_Vector vacc${int(N/32)} = Q6_Vw_vsub_VwVw_sat(vx${int(N/32)}, vmagic_bias_less_zero_point);
@@ -65,7 +65,7 @@ void xnn_f32_${DATATYPE.lower()}_vcvt_ukernel__hvx_u${BATCH_TILE}(
     HVX_Vector vx = xnn_loadu_f32(input);
     input += 32;
 
-    vx = xnn_fmadd_f32(vx, vscale, vmagic_bias);
+    vx = xnn_fmadd_qf32(vx, vscale, vmagic_bias);
 
     const HVX_Vector vacc = Q6_Vw_vsub_VwVw_sat(vx, vmagic_bias_less_zero_point);
 
@@ -81,7 +81,7 @@ void xnn_f32_${DATATYPE.lower()}_vcvt_ukernel__hvx_u${BATCH_TILE}(
     assert(batch < 32 * sizeof(float));
     HVX_Vector vx = xnn_loadu_f32(input);
 
-    vx = xnn_fmadd_f32(vx, vscale, vmagic_bias);
+    vx = xnn_fmadd_qf32(vx, vscale, vmagic_bias);
 
     const HVX_Vector vacc = Q6_Vw_vsub_VwVw_sat(vx, vmagic_bias_less_zero_point);
 
