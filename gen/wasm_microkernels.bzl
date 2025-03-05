@@ -73,12 +73,20 @@ PROD_WASM_MICROKERNEL_SRCS = [
 ]
 
 NON_PROD_WASM_MICROKERNEL_SRCS = [
+    "src/f32-dwconv/gen/f32-dwconv-3f3m3l1c1s1r-minmax-wasm-acc2.c",
+    "src/f32-dwconv/gen/f32-dwconv-3f3m3l1c1s1r-minmax-wasm.c",
     "src/f32-dwconv/gen/f32-dwconv-3p1c-minmax-wasm.c",
     "src/f32-dwconv/gen/f32-dwconv-3p2c-minmax-wasm-acc2.c",
     "src/f32-dwconv/gen/f32-dwconv-3p2c-minmax-wasm.c",
     "src/f32-dwconv/gen/f32-dwconv-4p1c-minmax-wasm.c",
     "src/f32-dwconv/gen/f32-dwconv-4p2c-minmax-wasm-acc2.c",
     "src/f32-dwconv/gen/f32-dwconv-4p2c-minmax-wasm.c",
+    "src/f32-dwconv/gen/f32-dwconv-5f5m5l1c1s1r-minmax-wasm-acc2.c",
+    "src/f32-dwconv/gen/f32-dwconv-5f5m5l1c1s1r-minmax-wasm.c",
+    "src/f32-dwconv/gen/f32-dwconv-6f6m7l1c1s1r-minmax-wasm-acc2.c",
+    "src/f32-dwconv/gen/f32-dwconv-6f6m7l1c1s1r-minmax-wasm.c",
+    "src/f32-dwconv/gen/f32-dwconv-8f8m9l1c1s1r-minmax-wasm-acc2.c",
+    "src/f32-dwconv/gen/f32-dwconv-8f8m9l1c1s1r-minmax-wasm.c",
     "src/f32-dwconv/gen/f32-dwconv-9p1c-minmax-wasm.c",
     "src/f32-dwconv/gen/f32-dwconv-9p2c-minmax-wasm-acc2.c",
     "src/f32-dwconv/gen/f32-dwconv-9p2c-minmax-wasm.c",
