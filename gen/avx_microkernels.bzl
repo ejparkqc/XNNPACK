@@ -7,7 +7,6 @@ Auto-generated file. Do not edit!
 
 PROD_AVX_MICROKERNEL_SRCS = [
     "src/f16-f32-vcvt/gen/f16-f32-vcvt-avx-int16-u16.c",
-    "src/f32-avgpool/gen/f32-avgpool-9p-minmax-avx-u8.c",
     "src/f32-dwconv/gen/f32-dwconv-3p16c-minmax-avx.c",
     "src/f32-dwconv/gen/f32-dwconv-4p16c-minmax-avx.c",
     "src/f32-dwconv/gen/f32-dwconv-9p16c-minmax-avx.c",
@@ -129,6 +128,7 @@ NON_PROD_AVX_MICROKERNEL_SRCS = [
     "src/f16-f32-vcvt/gen/f16-f32-vcvt-avx-int32-u16.c",
     "src/f16-f32-vcvt/gen/f16-f32-vcvt-avx-int32-u24.c",
     "src/f16-f32-vcvt/gen/f16-f32-vcvt-avx-int32-u32.c",
+    "src/f32-avgpool/gen/f32-avgpool-9p-minmax-avx-u8.c",
     "src/f32-dwconv/gen/f32-dwconv-3p8c-minmax-avx-acc2.c",
     "src/f32-dwconv/gen/f32-dwconv-3p8c-minmax-avx.c",
     "src/f32-dwconv/gen/f32-dwconv-3p16c-minmax-avx-acc2.c",

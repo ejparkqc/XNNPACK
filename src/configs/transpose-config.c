@@ -155,9 +155,6 @@ static void init_transpose_config(void) {
         transpose_config.x32.const_size_ukernel = XNN_INIT_TRANSPOSEC_UKERNEL(xnn_x32_transposec_ukernel__2x4_scalar_int);
         transpose_config.x32.tile_size = 32;
       }
-    #elif XNN_ARCH_HEXAGON && XNN_ENABLE_HVX
-      transpose_config.x32.const_size_ukernel = XNN_INIT_TRANSPOSEC_UKERNEL(xnn_x32_transposec_ukernel__32x32_multi_multi_hvx);
-      transpose_config.x32.tile_size = 32;
     #else
       transpose_config.x32.const_size_ukernel = XNN_INIT_TRANSPOSEC_UKERNEL(xnn_x32_transposec_ukernel__2x4_scalar_int);
       transpose_config.x32.tile_size = 32;

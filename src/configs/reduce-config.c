@@ -108,9 +108,6 @@ static void init_s8_rmax_config(void) {
       s8_rmax_config.ukernel = XNN_INIT_REDUCE_UKERNEL(xnn_s8_rmax_ukernel__scalar_u2_acc2);
       s8_rmax_config.rd_ukernel = XNN_INIT_REDUCE_DISCONTIGUOUS_UKERNEL(xnn_s8_rdmax_ukernel_2p2x__scalar_c2);
     }
-  #elif XNN_ARCH_HEXAGON && XNN_ENABLE_HVX
-    s8_rmax_config.ukernel = XNN_INIT_REDUCE_UKERNEL(xnn_s8_rmax_ukernel__hvx_u256_acc2);
-    s8_rmax_config.rd_ukernel = XNN_INIT_REDUCE_DISCONTIGUOUS_UKERNEL(xnn_s8_rdmax_ukernel_2p2x__hvx_c128);
   #elif XNN_ARCH_WASMSIMD || XNN_ARCH_WASMRELAXEDSIMD
     s8_rmax_config.ukernel = XNN_INIT_REDUCE_UKERNEL(xnn_s8_rmax_ukernel__wasmsimd_u32_acc2);
     s8_rmax_config.rd_ukernel = XNN_INIT_REDUCE_DISCONTIGUOUS_UKERNEL(xnn_s8_rdmax_ukernel_2p2x__wasmsimd_c32);
@@ -141,8 +138,6 @@ static void init_s8_rminmax_config(void) {
     } else {
       s8_rminmax_config.ukernel = XNN_INIT_REDUCE_UKERNEL(xnn_s8_rminmax_ukernel__scalar_u2_acc2);
     }
-  #elif XNN_ARCH_HEXAGON && XNN_ENABLE_HVX
-    s8_rminmax_config.ukernel = XNN_INIT_REDUCE_UKERNEL(xnn_s8_rminmax_ukernel__hvx_u256_acc2);
   #elif XNN_ARCH_WASMSIMD || XNN_ARCH_WASMRELAXEDSIMD
     s8_rminmax_config.ukernel = XNN_INIT_REDUCE_UKERNEL(xnn_s8_rminmax_ukernel__wasmsimd_u32_acc2);
   #else
@@ -174,9 +169,6 @@ static void init_s8_rmin_config(void) {
       s8_rmin_config.ukernel = XNN_INIT_REDUCE_UKERNEL(xnn_s8_rmin_ukernel__scalar_u2_acc2);
       s8_rmin_config.rd_ukernel = XNN_INIT_REDUCE_DISCONTIGUOUS_UKERNEL(xnn_s8_rdmin_ukernel_2p2x__scalar_c2);
     }
-  #elif XNN_ARCH_HEXAGON && XNN_ENABLE_HVX
-    s8_rmin_config.ukernel = XNN_INIT_REDUCE_UKERNEL(xnn_s8_rmin_ukernel__hvx_u256_acc2);
-    s8_rmin_config.rd_ukernel = XNN_INIT_REDUCE_DISCONTIGUOUS_UKERNEL(xnn_s8_rdmin_ukernel_2p2x__hvx_c128);
   #elif XNN_ARCH_WASMSIMD || XNN_ARCH_WASMRELAXEDSIMD
     s8_rmin_config.ukernel = XNN_INIT_REDUCE_UKERNEL(xnn_s8_rmin_ukernel__wasmsimd_u32_acc2);
     s8_rmin_config.rd_ukernel = XNN_INIT_REDUCE_DISCONTIGUOUS_UKERNEL(xnn_s8_rdmin_ukernel_2p2x__wasmsimd_c32);
@@ -205,9 +197,6 @@ static void init_u8_rmax_config(void) {
   #elif XNN_ARCH_X86 || XNN_ARCH_X86_64
     u8_rmax_config.ukernel = XNN_INIT_REDUCE_UKERNEL(xnn_u8_rmax_ukernel__sse2_u32_acc2);
     u8_rmax_config.rd_ukernel = XNN_INIT_REDUCE_DISCONTIGUOUS_UKERNEL(xnn_u8_rdmax_ukernel_2p2x__sse2_c32);
-  #elif XNN_ARCH_HEXAGON && XNN_ENABLE_HVX
-    u8_rmax_config.ukernel = XNN_INIT_REDUCE_UKERNEL(xnn_u8_rmax_ukernel__hvx_u256_acc2);
-    u8_rmax_config.rd_ukernel = XNN_INIT_REDUCE_DISCONTIGUOUS_UKERNEL(xnn_u8_rdmax_ukernel_2p2x__hvx_c128);
   #elif XNN_ARCH_WASMSIMD || XNN_ARCH_WASMRELAXEDSIMD
     u8_rmax_config.ukernel = XNN_INIT_REDUCE_UKERNEL(xnn_u8_rmax_ukernel__wasmsimd_u32_acc2);
     u8_rmax_config.rd_ukernel = XNN_INIT_REDUCE_DISCONTIGUOUS_UKERNEL(xnn_u8_rdmax_ukernel_2p2x__wasmsimd_c32);
@@ -232,8 +221,6 @@ static void init_u8_rminmax_config(void) {
     u8_rminmax_config.ukernel = XNN_INIT_REDUCE_UKERNEL(xnn_u8_rminmax_ukernel__neon_u32_acc2);
   #elif XNN_ARCH_X86 || XNN_ARCH_X86_64
     u8_rminmax_config.ukernel = XNN_INIT_REDUCE_UKERNEL(xnn_u8_rminmax_ukernel__sse2_u32_acc2);
-  #elif XNN_ARCH_HEXAGON && XNN_ENABLE_HVX
-    u8_rminmax_config.ukernel = XNN_INIT_REDUCE_UKERNEL(xnn_u8_rminmax_ukernel__hvx_u256_acc2);
   #elif XNN_ARCH_WASMSIMD || XNN_ARCH_WASMRELAXEDSIMD
     u8_rminmax_config.ukernel = XNN_INIT_REDUCE_UKERNEL(xnn_u8_rminmax_ukernel__wasmsimd_u32_acc2);
   #else
@@ -258,9 +245,6 @@ static void init_u8_rmin_config(void) {
   #elif XNN_ARCH_X86 || XNN_ARCH_X86_64
     u8_rmin_config.ukernel = XNN_INIT_REDUCE_UKERNEL(xnn_u8_rmin_ukernel__sse2_u32_acc2);
     u8_rmin_config.rd_ukernel = XNN_INIT_REDUCE_DISCONTIGUOUS_UKERNEL(xnn_u8_rdmin_ukernel_2p2x__sse2_c32);
-  #elif XNN_ARCH_HEXAGON && XNN_ENABLE_HVX
-    u8_rmin_config.ukernel = XNN_INIT_REDUCE_UKERNEL(xnn_u8_rmin_ukernel__hvx_u256_acc2);
-    u8_rmin_config.rd_ukernel = XNN_INIT_REDUCE_DISCONTIGUOUS_UKERNEL(xnn_u8_rdmin_ukernel_2p2x__hvx_c128);
   #elif XNN_ARCH_WASMSIMD || XNN_ARCH_WASMRELAXEDSIMD
     u8_rmin_config.ukernel = XNN_INIT_REDUCE_UKERNEL(xnn_u8_rmin_ukernel__wasmsimd_u32_acc2);
     u8_rmin_config.rd_ukernel = XNN_INIT_REDUCE_DISCONTIGUOUS_UKERNEL(xnn_u8_rdmin_ukernel_2p2x__wasmsimd_c32);
@@ -598,9 +582,6 @@ static void init_f32_rmax_config(void) {
   #elif XNN_ARCH_RISCV && XNN_ENABLE_RISCV_VECTOR
     f32_rmax_config.ukernel = XNN_INIT_REDUCE_UKERNEL(xnn_f32_rmax_ukernel__rvv_u8v);
     f32_rmax_config.rd_ukernel = XNN_INIT_REDUCE_DISCONTIGUOUS_UKERNEL(xnn_f32_rdmax_ukernel_2p2x__scalar_c2);
-  #elif XNN_ARCH_HEXAGON && XNN_ENABLE_HVX
-    f32_rmax_config.ukernel = XNN_INIT_REDUCE_UKERNEL(xnn_f32_rmax_ukernel__hvx_u64_acc2);
-    f32_rmax_config.rd_ukernel = XNN_INIT_REDUCE_DISCONTIGUOUS_UKERNEL(xnn_f32_rdmax_ukernel_2p2x__hvx_c32);
   #else
     f32_rmax_config.ukernel = XNN_INIT_REDUCE_UKERNEL(xnn_f32_rmax_ukernel__scalar_u4_acc4);
     f32_rmax_config.rd_ukernel = XNN_INIT_REDUCE_DISCONTIGUOUS_UKERNEL(xnn_f32_rdmax_ukernel_2p2x__scalar_c2);
@@ -637,8 +618,6 @@ static void init_f32_rminmax_config(void) {
     f32_rminmax_config.ukernel = XNN_INIT_REDUCE_UKERNEL(xnn_f32_rminmax_ukernel__wasmsimd_minmax_u16_acc4);
   #elif XNN_ARCH_RISCV && XNN_ENABLE_RISCV_VECTOR
     f32_rminmax_config.ukernel = XNN_INIT_REDUCE_UKERNEL(xnn_f32_rminmax_ukernel__rvv_u8v);
-  #elif XNN_ARCH_HEXAGON && XNN_ENABLE_HVX
-    f32_rminmax_config.ukernel = XNN_INIT_REDUCE_UKERNEL(xnn_f32_rminmax_ukernel__hvx_u64_acc2);
   #else
     f32_rminmax_config.ukernel = XNN_INIT_REDUCE_UKERNEL(xnn_f32_rminmax_ukernel__scalar_u4_acc4);
   #endif
@@ -687,9 +666,6 @@ static void init_f32_rmin_config(void) {
   #elif XNN_ARCH_RISCV && XNN_ENABLE_RISCV_VECTOR
     f32_rmin_config.ukernel = XNN_INIT_REDUCE_UKERNEL(xnn_f32_rmin_ukernel__rvv_u8v);
     f32_rmin_config.rd_ukernel = XNN_INIT_REDUCE_DISCONTIGUOUS_UKERNEL(xnn_f32_rdmin_ukernel_2p2x__scalar_c2);
-  #elif XNN_ARCH_HEXAGON && XNN_ENABLE_HVX
-    f32_rmin_config.ukernel = XNN_INIT_REDUCE_UKERNEL(xnn_f32_rmin_ukernel__hvx_u64_acc2);
-    f32_rmin_config.rd_ukernel = XNN_INIT_REDUCE_DISCONTIGUOUS_UKERNEL(xnn_f32_rdmin_ukernel_2p2x__hvx_c32);
   #else
     f32_rmin_config.ukernel = XNN_INIT_REDUCE_UKERNEL(xnn_f32_rmin_ukernel__scalar_u4_acc4);
     f32_rmin_config.rd_ukernel = XNN_INIT_REDUCE_DISCONTIGUOUS_UKERNEL(xnn_f32_rdmin_ukernel_2p2x__scalar_c2);
@@ -746,9 +722,6 @@ static void init_f32_rsum_config(void) {
   #elif XNN_ARCH_RISCV && XNN_ENABLE_RISCV_VECTOR
     f32_rsum_config.ukernel = XNN_INIT_REDUCE_UKERNEL(xnn_f32_rsum_ukernel__scalar_u4_acc4);
     f32_rsum_config.rd_ukernel = XNN_INIT_REDUCE_DISCONTIGUOUS_UKERNEL(xnn_f32_rdsum_ukernel_7p7x__rvv_u4v);
-  #elif XNN_ARCH_HEXAGON && XNN_ENABLE_HVX
-    f32_rsum_config.ukernel = XNN_INIT_REDUCE_UKERNEL(xnn_f32_rsum_ukernel__hvx_u64_acc2);
-    f32_rsum_config.rd_ukernel = XNN_INIT_REDUCE_DISCONTIGUOUS_UKERNEL(xnn_f32_rdsum_ukernel_7p7x__scalar_c4);
   #else
     f32_rsum_config.ukernel = XNN_INIT_REDUCE_UKERNEL(xnn_f32_rsum_ukernel__scalar_u4_acc4);
     f32_rsum_config.rd_ukernel = XNN_INIT_REDUCE_DISCONTIGUOUS_UKERNEL(xnn_f32_rdsum_ukernel_7p7x__scalar_c4);

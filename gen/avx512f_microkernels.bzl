@@ -6,7 +6,6 @@ Auto-generated file. Do not edit!
 """
 
 PROD_AVX512F_MICROKERNEL_SRCS = [
-    "src/f32-avgpool/gen/f32-avgpool-9p-minmax-avx512f-u16.c",
     "src/f32-dwconv/gen/f32-dwconv-3p16c-minmax-avx512f.c",
     "src/f32-dwconv/gen/f32-dwconv-4p16c-minmax-avx512f.c",
     "src/f32-dwconv/gen/f32-dwconv-9p16c-minmax-avx512f.c",
@@ -79,6 +78,7 @@ PROD_AVX512F_MICROKERNEL_SRCS = [
 ]
 
 NON_PROD_AVX512F_MICROKERNEL_SRCS = [
+    "src/f32-avgpool/gen/f32-avgpool-9p-minmax-avx512f-u16.c",
     "src/f32-dwconv/gen/f32-dwconv-3p16c-minmax-avx512f-acc2.c",
     "src/f32-dwconv/gen/f32-dwconv-3p32c-minmax-avx512f-acc2.c",
     "src/f32-dwconv/gen/f32-dwconv-3p32c-minmax-avx512f.c",

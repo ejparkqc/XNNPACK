@@ -90,8 +90,6 @@ static void init_f32_raddstoreexpminusmax_config(void) {
     #endif
   #elif XNN_ARCH_RISCV && XNN_ENABLE_RISCV_VECTOR
     f32_raddstoreexpminusmax_config.ukernel = XNN_INIT_RADDSTOREEXPMINUSMAX_UKERNEL(xnn_f32_raddstoreexpminusmax_ukernel__rvv_rr2_p6_u4v);
-  #elif XNN_ARCH_HEXAGON && XNN_ENABLE_HVX
-    f32_raddstoreexpminusmax_config.ukernel = XNN_INIT_RADDSTOREEXPMINUSMAX_UKERNEL(xnn_f32_raddstoreexpminusmax_ukernel__hvx_rr2_p5_u128_acc2);
   #else
     f32_raddstoreexpminusmax_config.ukernel = XNN_INIT_RADDSTOREEXPMINUSMAX_UKERNEL(xnn_f32_raddstoreexpminusmax_ukernel__scalar_rr2_p5_u4_acc2);
   #endif

@@ -633,8 +633,6 @@ static void init_f32_abs_config(void) {
     }
   #elif XNN_ARCH_WASMSIMD || XNN_ARCH_WASMRELAXEDSIMD
     f32_abs_config.ukernel = XNN_INIT_UNARY_UKERNEL(xnn_f32_vabs_ukernel__wasmsimd_u8);
-  #elif XNN_ARCH_HEXAGON && XNN_ENABLE_HVX
-    f32_abs_config.ukernel = XNN_INIT_UNARY_UKERNEL(xnn_f32_vabs_ukernel__hvx_u128);
   #else
     f32_abs_config.ukernel = XNN_INIT_UNARY_UKERNEL(xnn_f32_vabs_ukernel__scalar_u4);
   #endif
@@ -674,8 +672,6 @@ static void init_f32_approxgelu_config_impl(struct xnn_unary_elementwise_config*
     }
   #elif XNN_ARCH_WASMSIMD || XNN_ARCH_WASMRELAXEDSIMD
     config->ukernel = XNN_INIT_UNARY_UKERNEL(xnn_f32_vapproxgelu_ukernel__wasmsimd_rational_12_10_div_u12);
-  #elif XNN_ARCH_HEXAGON && XNN_ENABLE_HVX
-    config->ukernel = XNN_INIT_UNARY_UKERNEL(xnn_f32_vapproxgelu_ukernel__hvx_rational_12_10_div_u128);
   #else
     config->ukernel = XNN_INIT_UNARY_UKERNEL(xnn_f32_vapproxgelu_ukernel__scalar_rational_12_10_div_u1);
   #endif
@@ -722,9 +718,6 @@ static void init_f32_clamp_config(void) {
   #elif XNN_ARCH_WASMSIMD
     f32_clamp_config.ukernel = XNN_INIT_UNARY_UKERNEL(xnn_f32_vclamp_ukernel__wasmsimd_u8);
     f32_clamp_config.init = (xnn_init_unary_uparams_fn) xnn_init_f32_clamp_scalar_params;
-  #elif XNN_ARCH_HEXAGON && XNN_ENABLE_HVX
-    f32_clamp_config.ukernel = XNN_INIT_UNARY_UKERNEL(xnn_f32_vclamp_ukernel__hvx_u128);
-    f32_clamp_config.init = (xnn_init_unary_uparams_fn) xnn_init_f32_clamp_scalar_params;
   #else
     f32_clamp_config.ukernel = XNN_INIT_UNARY_UKERNEL(xnn_f32_vclamp_ukernel__scalar_u4);
     f32_clamp_config.init = (xnn_init_unary_uparams_fn) xnn_init_f32_clamp_scalar_params;
@@ -767,8 +760,6 @@ static void init_f32_cosine_config_impl(struct xnn_unary_elementwise_config* con
     } else {
       config->ukernel = XNN_INIT_UNARY_UKERNEL(xnn_f32_vcos_ukernel__wasmsimd_rational_5_4_div_u16);
     }
-  #elif XNN_ARCH_HEXAGON && XNN_ENABLE_HVX
-    config->ukernel = XNN_INIT_UNARY_UKERNEL(xnn_f32_vcos_ukernel__hvx_rational_5_4_div_u128);
   #else
     config->ukernel = XNN_INIT_UNARY_UKERNEL(xnn_f32_vcos_ukernel__scalar_rational_5_4_div_u1);
   #endif
@@ -875,8 +866,6 @@ static void init_f32_gelu_config_impl(struct xnn_unary_elementwise_config* confi
     }
   #elif XNN_ARCH_WASMSIMD || XNN_ARCH_WASMRELAXEDSIMD
     config->ukernel = XNN_INIT_UNARY_UKERNEL(xnn_f32_vgelu_ukernel__wasmsimd_rational_12_10_div_u12);
-  #elif XNN_ARCH_HEXAGON && XNN_ENABLE_HVX
-    config->ukernel = XNN_INIT_UNARY_UKERNEL(xnn_f32_vgelu_ukernel__hvx_rational_12_10_div_u128);
   #else
     config->ukernel = XNN_INIT_UNARY_UKERNEL(xnn_f32_vgelu_ukernel__scalar_rational_12_10_div_u1);
   #endif
@@ -923,8 +912,6 @@ static void init_f32_hswish_config_impl(struct xnn_unary_elementwise_config* con
     config->ukernel = XNN_INIT_UNARY_UKERNEL(xnn_f32_vhswish_ukernel__wasmsimd_u8);
   #elif XNN_ARCH_RISCV && XNN_ENABLE_RISCV_VECTOR
     config->ukernel = XNN_INIT_UNARY_UKERNEL(xnn_f32_vhswish_ukernel__rvv_u4v);
-  #elif XNN_ARCH_HEXAGON && XNN_ENABLE_HVX
-    config->ukernel = XNN_INIT_UNARY_UKERNEL(xnn_f32_vhswish_ukernel__hvx_u128);
   #else
     config->ukernel = XNN_INIT_UNARY_UKERNEL(xnn_f32_vhswish_ukernel__scalar_u4);
   #endif
@@ -965,8 +952,6 @@ static void init_f32_exp_config_impl(struct xnn_unary_elementwise_config* config
     }
   #elif XNN_ARCH_WASMSIMD || XNN_ARCH_WASMRELAXEDSIMD
     config->ukernel = XNN_INIT_UNARY_UKERNEL(xnn_f32_vexp_ukernel__wasmsimd_rational_3_2_div_u12);
-  #elif XNN_ARCH_HEXAGON && XNN_ENABLE_HVX
-    config->ukernel = XNN_INIT_UNARY_UKERNEL(xnn_f32_vexp_ukernel__hvx_rational_3_2_div_u128);
   #else
     config->ukernel = XNN_INIT_UNARY_UKERNEL(xnn_f32_vexp_ukernel__scalar_rational_3_2_div_u4);
   #endif
@@ -1007,8 +992,6 @@ static void init_f32_log_config_impl(struct xnn_unary_elementwise_config* config
     }
   #elif XNN_ARCH_WASMSIMD || XNN_ARCH_WASMRELAXEDSIMD
     config->ukernel = XNN_INIT_UNARY_UKERNEL(xnn_f32_vlog_ukernel__wasmsimd_rational_3_3_div_u8);
-  #elif XNN_ARCH_HEXAGON && XNN_ENABLE_HVX
-    config->ukernel = XNN_INIT_UNARY_UKERNEL(xnn_f32_vlog_ukernel__hvx_rational_3_3_div_u128);
   #else
     config->ukernel = XNN_INIT_UNARY_UKERNEL(xnn_f32_vlog_ukernel__scalar_rational_3_3_div_u1);
   #endif
@@ -1108,8 +1091,6 @@ static void init_f32_neg_config(void) {
     }
   #elif XNN_ARCH_WASMSIMD || XNN_ARCH_WASMRELAXEDSIMD
     f32_neg_config.ukernel = XNN_INIT_UNARY_UKERNEL(xnn_f32_vneg_ukernel__wasmsimd_u8);
-  #elif XNN_ARCH_HEXAGON && XNN_ENABLE_HVX
-    f32_neg_config.ukernel = XNN_INIT_UNARY_UKERNEL(xnn_f32_vneg_ukernel__hvx_u128);
   #else
     f32_neg_config.ukernel = XNN_INIT_UNARY_UKERNEL(xnn_f32_vneg_ukernel__scalar_u4);
   #endif
@@ -1147,8 +1128,6 @@ static void init_f32_rndd_config(void) {
     }
   #elif XNN_ARCH_WASMSIMD || XNN_ARCH_WASMRELAXEDSIMD
     f32_rndd_config.ukernel = XNN_INIT_UNARY_UKERNEL(xnn_f32_vrndd_ukernel__wasmsimd_u8);
-  #elif XNN_ARCH_HEXAGON && XNN_ENABLE_HVX
-    f32_rndd_config.ukernel = XNN_INIT_UNARY_UKERNEL(xnn_f32_vrndd_ukernel__hvx_u128);
   #elif XNN_ARCH_RISCV && XNN_ENABLE_RISCV_VECTOR
     const struct xnn_hardware_config* hardware_config = xnn_init_hardware_config();
     f32_rndd_config.ukernel = XNN_INIT_UNARY_UKERNEL(xnn_f32_vrndd_ukernel__rvv_u4v);
@@ -1189,8 +1168,6 @@ static void init_f32_rndne_config(void) {
     }
   #elif XNN_ARCH_WASMSIMD || XNN_ARCH_WASMRELAXEDSIMD
     f32_rndne_config.ukernel = XNN_INIT_UNARY_UKERNEL(xnn_f32_vrndne_ukernel__wasmsimd_u8);
-  #elif XNN_ARCH_HEXAGON && XNN_ENABLE_HVX
-    f32_rndne_config.ukernel = XNN_INIT_UNARY_UKERNEL(xnn_f32_vrndne_ukernel__hvx_u128);
   #elif XNN_ARCH_RISCV && XNN_ENABLE_RISCV_VECTOR
     const struct xnn_hardware_config* hardware_config = xnn_init_hardware_config();
     f32_rndne_config.ukernel = XNN_INIT_UNARY_UKERNEL(xnn_f32_vrndne_ukernel__rvv_u4v);
@@ -1231,8 +1208,6 @@ static void init_f32_rndu_config(void) {
     }
   #elif XNN_ARCH_WASMSIMD || XNN_ARCH_WASMRELAXEDSIMD
     f32_rndu_config.ukernel = XNN_INIT_UNARY_UKERNEL(xnn_f32_vrndu_ukernel__wasmsimd_u8);
-  #elif XNN_ARCH_HEXAGON && XNN_ENABLE_HVX
-    f32_rndu_config.ukernel = XNN_INIT_UNARY_UKERNEL(xnn_f32_vrndu_ukernel__hvx_u128);
   #elif XNN_ARCH_RISCV && XNN_ENABLE_RISCV_VECTOR
     const struct xnn_hardware_config* hardware_config = xnn_init_hardware_config();
     f32_rndu_config.ukernel = XNN_INIT_UNARY_UKERNEL(xnn_f32_vrndu_ukernel__rvv_u4v);
@@ -1273,8 +1248,6 @@ static void init_f32_rndz_config(void) {
     }
   #elif XNN_ARCH_WASMSIMD || XNN_ARCH_WASMRELAXEDSIMD
     f32_rndz_config.ukernel = XNN_INIT_UNARY_UKERNEL(xnn_f32_vrndz_ukernel__wasmsimd_u8);
-  #elif XNN_ARCH_HEXAGON && XNN_ENABLE_HVX
-    f32_rndz_config.ukernel = XNN_INIT_UNARY_UKERNEL(xnn_f32_vrndz_ukernel__hvx_u128);
   #elif XNN_ARCH_RISCV && XNN_ENABLE_RISCV_VECTOR
     const struct xnn_hardware_config* hardware_config = xnn_init_hardware_config();
     f32_rndz_config.ukernel = XNN_INIT_UNARY_UKERNEL(xnn_f32_vrndz_ukernel__rvv_u4v);
@@ -1348,8 +1321,6 @@ static void init_f32_sqr_config(void) {
     }
   #elif XNN_ARCH_WASMSIMD || XNN_ARCH_WASMRELAXEDSIMD
     f32_sqr_config.ukernel = XNN_INIT_UNARY_UKERNEL(xnn_f32_vsqr_ukernel__wasmsimd_u8);
-  #elif XNN_ARCH_HEXAGON && XNN_ENABLE_HVX
-    f32_sqr_config.ukernel = XNN_INIT_UNARY_UKERNEL(xnn_f32_vsqr_ukernel__hvx_u128);
   #else
     f32_sqr_config.ukernel = XNN_INIT_UNARY_UKERNEL(xnn_f32_vsqr_ukernel__scalar_u4);
   #endif
@@ -1475,8 +1446,6 @@ static void init_f32_sine_config_impl(struct xnn_unary_elementwise_config* confi
     } else {
       config->ukernel = XNN_INIT_UNARY_UKERNEL(xnn_f32_vsin_ukernel__wasmsimd_rational_5_4_div_u16);
     }
-  #elif XNN_ARCH_HEXAGON && XNN_ENABLE_HVX
-    config->ukernel = XNN_INIT_UNARY_UKERNEL(xnn_f32_vsin_ukernel__hvx_rational_5_4_div_u128);
   #else
     config->ukernel = XNN_INIT_UNARY_UKERNEL(xnn_f32_vsin_ukernel__scalar_rational_5_4_div_u1);
   #endif
@@ -1523,8 +1492,6 @@ static void init_f32_tanh_config_impl(struct xnn_unary_elementwise_config* confi
     } else {
       config->ukernel = XNN_INIT_UNARY_UKERNEL(xnn_f32_vtanh_ukernel__wasmsimd_rational_9_8_div_u16);
     }
-  #elif XNN_ARCH_HEXAGON && XNN_ENABLE_HVX
-    config->ukernel = XNN_INIT_UNARY_UKERNEL(xnn_f32_vtanh_ukernel__hvx_rational_9_8_div_u128);
   #else
     config->ukernel = XNN_INIT_UNARY_UKERNEL(xnn_f32_vtanh_ukernel__scalar_rational_9_8_div_u1);
   #endif
@@ -1633,9 +1600,6 @@ static void init_f32_to_qs8_cvt_config(void) {
   #elif XNN_ARCH_RISCV && XNN_ENABLE_RISCV_VECTOR
     const struct xnn_hardware_config* hardware_config = xnn_init_hardware_config();
     f32_to_qs8_cvt_config.ukernel = XNN_INIT_UNARY_UKERNEL(xnn_f32_qs8_vcvt_ukernel__rvv_u2v);
-    f32_to_qs8_cvt_config.init = (xnn_init_unary_uparams_fn) xnn_init_f32_qs8_cvt_scalar_params;
-  #elif XNN_ARCH_HEXAGON && XNN_ENABLE_HVX
-    f32_to_qs8_cvt_config.ukernel = XNN_INIT_UNARY_UKERNEL(xnn_f32_qs8_vcvt_ukernel__hvx_u256);
     f32_to_qs8_cvt_config.init = (xnn_init_unary_uparams_fn) xnn_init_f32_qs8_cvt_scalar_params;
   #else
     f32_to_qs8_cvt_config.ukernel = XNN_INIT_UNARY_UKERNEL(xnn_f32_qs8_vcvt_ukernel__scalar_lrintf_u4);
