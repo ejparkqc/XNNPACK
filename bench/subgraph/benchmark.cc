@@ -339,6 +339,9 @@ static void TransformerBlockArguments(benchmark::internal::Benchmark* b) {
 
   // Gemma3-1B parameters.
   b->Args({128, 1152, 4, 256, 6 * 1152});
+
+  // For profiling. 
+  b->Args({64, 384, 4, 6, 1536});
 }
 
 BENCHMARK(FP32Attention)
