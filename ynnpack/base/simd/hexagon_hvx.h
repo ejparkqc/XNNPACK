@@ -406,6 +406,9 @@ YNN_ALWAYS_INLINE void store(int8_t* ptr, s8x128 b, size_t n) {
   internal::partial_store(ptr, b.v, n);
 }
 
+YNN_ALWAYS_INLINE f32x32 operator+(f32x32 a, f32x32 b) {
+  return f32x32{Q6_Vsf_vadd_VsfVsf(a.v, b.v)};
+}
 YNN_ALWAYS_INLINE s32x32 operator+(s32x32 a, s32x32 b) {
   return s32x32{Q6_Vw_vadd_VwVw(a.v, b.v)};
 }
@@ -432,6 +435,9 @@ YNN_ALWAYS_INLINE u8x128 operator-(u8x128 a, u8x128 b) {
   return u8x128{Q6_Vb_vsub_VbVb(a.v, b.v)};
 }
 
+YNN_ALWAYS_INLINE f32x32 operator*(f32x32 a, f32x32 b) {
+  return f32x32{Q6_Vsf_equals_Vqf32(Q6_Vqf32_vmpy_VsfVsf(a.v, b.v))};
+}
 YNN_ALWAYS_INLINE s32x32 operator*(s32x32 a, s32x32 b) {
   // Hexagon doesn't have a 32-bit integer multiply, but it does have two
   // 32-bit x 16-bit multiply instructions that can be used to implement 32-bit
@@ -482,6 +488,14 @@ YNN_ALWAYS_INLINE s8x128 max(s8x128 a, s8x128 b) {
   return s8x128{Q6_Vb_vmax_VbVb(a.v, b.v)};
 }
 
+YNN_ALWAYS_INLINE float horizontal_sum(f32x32 x) {
+  x.v = Q6_Vsf_vadd_VsfVsf(x.v, Q6_V_vror_VR(x.v, 64));
+  x.v = Q6_Vsf_vadd_VsfVsf(x.v, Q6_V_vror_VR(x.v, 32));
+  x.v = Q6_Vsf_vadd_VsfVsf(x.v, Q6_V_vror_VR(x.v, 16));
+  x.v = Q6_Vsf_vadd_VsfVsf(x.v, Q6_V_vror_VR(x.v, 8));
+  x.v = Q6_Vsf_vadd_VsfVsf(x.v, Q6_V_vror_VR(x.v, 4));
+  return *(float*)&x.v;
+}
 YNN_ALWAYS_INLINE int32_t horizontal_sum(s32x32 x) {
   x.v = Q6_Vw_vadd_VwVw(x.v, Q6_V_vror_VR(x.v, 64));
   x.v = Q6_Vw_vadd_VwVw(x.v, Q6_V_vror_VR(x.v, 32));

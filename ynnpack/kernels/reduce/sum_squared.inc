@@ -23,6 +23,7 @@ YNN_UNARY_REDUCE_KERNEL(arch_flag::neon, sum_squared_fp64_neon, double, double)
 #endif  // YNN_ARCH_ARM_NEON
 
 #ifdef YNN_ARCH_HEXAGON_HVX
+YNN_UNARY_REDUCE_KERNEL(arch_flag::hvx, sum_squared_fp32_hvx, float, float)
 YNN_UNARY_REDUCE_KERNEL(arch_flag::hvx, sum_squared_int8_int32_hvx, int8_t, int32_t)
 YNN_UNARY_REDUCE_KERNEL(arch_flag::hvx, sum_squared_uint8_int32_hvx, uint8_t, int32_t)
 #endif  // YNN_ARCH_HEXAGON_HVX
