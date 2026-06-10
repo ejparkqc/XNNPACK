@@ -22,8 +22,8 @@ if [ -z "$HEXAGON_TOOLS_ROOT" ]; then
 fi
 
 # These should match the versions specified in hexagon.toolchain
-: "${HEXAGON_ARCH:=v68}"
-: "${HEXAGON_TOOL_VER:=v86}"
+: "${HEXAGON_ARCH:=v75}"
+: "${HEXAGON_TOOL_VER:=v87}"
 
 BINARY_PATH=$1
 [ -z "$BINARY_PATH" ] && echo "You must specify a path to the binary as the first argument" && exit 1
