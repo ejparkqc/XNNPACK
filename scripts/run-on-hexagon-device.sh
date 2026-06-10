@@ -22,9 +22,9 @@ if [ -z "$HEXAGON_TOOLS_ROOT" ]; then
 fi
 
 # These should match the versions specified in hexagon.toolchain
-: "${HEXAGON_ARCH:=v68}"
-: "${HEXAGON_SDK_VER:=5.3.0}"
-: "${HEXAGON_TOOL_VER:=v86}"
+: "${HEXAGON_ARCH:=v75}"
+: "${HEXAGON_SDK_VER:=5.4.0.3}"
+: "${HEXAGON_TOOL_VER:=v87}"
 : "${HEXAGON_DEVICE_FOLDER:=/data/local/tmp/run_main_on_hexagon}"
 
 BINARY_PATH=$1
